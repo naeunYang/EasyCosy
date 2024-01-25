@@ -1,0 +1,1594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EasyCosy</title>
+    <style>
+        html {
+            font-size: 16px;
+            letter-spacing: -1.5px;
+        }
+        *{
+            box-sizing:border-box;
+            margin: 0;
+            padding: 0;
+        }
+        #header{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 80%;
+            height: 7.5rem;
+            margin: auto;
+        }
+        #header #header-content1{
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        #header #header-content1 #easycosy{
+            font-weight: bold;
+            color:#9EC1B7;
+            font-size: 2.5rem;
+            text-decoration: none;
+            padding: 2rem 2rem 2.5rem 2rem;
+        }
+        #header #header-content1 #menulist{
+            display: inline-block;
+        }
+        #header #header-content1 #menulist .menu{
+            display: inline-block;
+        }
+        #header #header-content1 #menulist .menu a{
+            color: black;
+            font-size: 1.4rem;
+            font-weight: bold;
+            padding: 0rem 0.8rem;
+            text-decoration: none;
+        }
+        #header #header-content1 #menulist #shopping{
+            color: #9EC1B7;
+            font-size: 1.4rem;
+            font-weight: bold;
+            padding: 0rem 0.8rem;
+            text-decoration: none;
+            user-select: none;
+            cursor: pointer;
+        }
+        #header #header-content1 #menulist a:hover{
+            color: #9EC1B7;
+        }
+
+        #header #header-content2{
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 2rem;
+        }
+        #header #header-content2 #search{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 20rem;
+            height: 3rem;
+            border: 0.05rem #9EC1B7 solid;
+            border-radius: 0.5rem;
+            padding : 0.75rem;
+            text-align:left;
+            line-height: 1.75rem;
+            margin-right: 2rem;
+        }
+        #header #header-content2 #search input[type="search"] {
+            outline: none;
+            background-color: transparent;
+            font-size: 1rem;
+            width: 16.5rem;
+            border: none;
+        }
+        #header #header-content2 #search img[src="image/magnifier.png"]{
+            width: 2.25rem;
+            height: auto;
+        }
+
+        #header #header-content2 #account{
+            display: inline-block;
+        }
+        #header #header-content2 #account img[src="image/account.png"] {
+            width: 3rem;
+            height: auto;
+        }
+        #header #header-content2 #account img[src="image/heart.png"] {
+            width: 3rem;
+            height: auto;
+            margin: 0rem 1rem;
+        }
+        #header #header-content2 #account img[src="image/basket.png"] {
+            width: 3rem;
+            height: auto;
+            padding-bottom: 0.1rem;
+        }
+
+
+        #category-container{
+            width: 100%;
+            height: 3.4rem;
+            margin-top: 1.5rem;
+            border-top: 0.1rem #d1d1d1 solid;
+            border-bottom: 0.1rem #d1d1d1 solid;
+        }
+
+        #category-container #category-content{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 80%;
+            height: 100%;
+            padding: 1rem 2rem;
+            margin: 0rem auto;
+        }
+
+        #category-container #category-content #category-content1{
+            height: 3.4rem;
+            width: 20rem;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        #category-container #category-content #category-content1 #shopping-menu .menu{
+            display: inline-block;
+            color: black;
+            text-decoration: none;
+            margin-right: 2rem;
+        }
+
+        #category-container #category-content #category-content1 #shopping-menu .menu:hover{
+            color: #9EC1B7;
+        }
+
+        #category-container #category-content #category-content2{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #searchranking{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            width: 14rem;
+            height: 2.5rem;
+        }
+
+        #searchranking a{
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        #searchrankinglist {
+            width: 14rem;
+            background: white;
+            border: 0.15rem #9EC1B7 solid;
+            padding: 0.5rem;
+            position: absolute;
+            top: 0.1rem;
+            display: none;
+            z-index: 3;
+        }
+
+        #searchrankinglist .rank{
+            width: 12rem;
+            height: 2.5rem;
+            text-align: left;
+            line-height: 2.5rem;
+            padding-left: 1rem;
+            padding-right: 0.5rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        #searchrankinglist .rank::before {
+            content: counter(list-item);
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+
+        img[src="image/downarrow.png"] {
+            width: 1.3rem;
+            height: auto;
+            margin-right: 1.5rem;
+        }
+
+        #searchranking:hover #searchrankinglist{
+            display: block;
+        }
+
+        #loginbtn{
+            width: 15rem;
+            height: 3.3rem;
+            text-align: center;
+        }
+
+        #loginbtn a{
+            line-height: 3.3rem;
+            text-decoration: none;
+            color: black;
+            padding: 0rem 0.8rem;
+            margin-right: -0.4rem;
+            border-right: 1px solid #ccc;
+        }
+
+        #loginbtn a:last-child {
+            border-right: none;
+            padding-right: 0rem;
+            margin-right: -1rem;
+        }
+
+        #ad-container{
+            width: 80%;
+            height: 10rem;
+            margin: 3rem auto;
+            padding: 0rem 2rem;
+        }
+
+        #ad-container img[src="image/banner.jpg"]{
+            width: 100%;
+            height: 10rem;
+        }
+
+        #newproduct-container{
+            width: 80%;
+            height: 64rem;
+            margin: 3rem auto;
+            padding: 2rem;
+        }
+
+        #newproduct-container #title{
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+        }
+
+        #newproduct-container .saleitem{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            height: 27rem;
+            margin-bottom: 3rem;
+        }
+
+        #newproduct-container .saleitem .item{
+            width: 25%;
+            height: 100%;
+            margin-left: 2rem;
+        }
+
+        #newproduct-container .saleitem .item:first-child {
+            margin-left: 0;
+        }
+
+        #newproduct-container .saleitem .item .itempicture{
+            position: relative;
+        }
+
+        #newproduct-container .saleitem .item .itempicture button{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: transparent;
+            border: none;
+            margin-bottom: 0.7rem;
+            margin-right: 0.5rem;
+            cursor: pointer;
+        }
+
+        #newproduct-container .saleitem .item .itempicture button img{
+            width: 2rem;
+            height: auto;
+        }
+
+        #newproduct-container .saleitem .item .itempicture a img{
+            width: 100%;
+            height: auto;
+            border-radius: 0.2rem;
+        }
+
+        #newproduct-container .saleitem .item .iteminfo{
+            height: 6rem;
+        }
+
+        #newproduct-container .saleitem .item .iteminfo .seller{
+            font-size: 0.7rem;
+            color: #8b8b8b;
+            margin-bottom: 0.2rem;
+        }
+
+        #newproduct-container .saleitem .item .iteminfo .productname{
+            font-size: 0.9rem;
+            color: #363636;
+            margin-bottom: 0.3rem;
+        }
+
+        #newproduct-container .saleitem .item .iteminfo .discountprice{
+            letter-spacing: 0px;
+        }
+
+        #newproduct-container .saleitem .item .iteminfo .discountprice .price{
+            font-weight: bold;
+            color: #000000;
+            padding: 0.1rem 0rem;
+        }
+
+        #newproduct-container .saleitem .item .iteminfo .discountprice .discount{
+            font-weight: bold;
+            color: red;
+        }
+
+        #newproduct-container .saleitem .item .iteminfo .discountprice .cost{
+            font-weight: bold;
+            color: #AFABAB;
+            text-decoration: line-through;
+        }
+
+        #newproduct-container .saleitem .item .iteminfo .rating{
+            letter-spacing: 0px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-top: 0.3rem;
+            margin-bottom: 0.1rem;
+        }
+        #newproduct-container .saleitem .item .iteminfo .rating img{
+            width:1.2rem;
+            height: auto;
+        }
+        #newproduct-container .saleitem .item .iteminfo .rating .ratingscore{
+            font-weight: bold;
+            font-size: 0.8rem;
+            margin-right: 0.3rem;
+        }
+        #newproduct-container .saleitem .item .iteminfo .rating .reviewcnt{
+            font-size: 0.8rem;
+            color: #8b8b8b;
+        }
+
+        #newproduct-container .saleitem .item .iteminfo .promotion span{
+            font-size: 0.7rem;
+            color: #8b8b8b;
+            background: #ebebeb;
+            border-radius: 0.2rem;
+            padding: 0.2rem;
+            margin-right: 0.1rem;
+        }
+
+        #product-container{
+            width: 80%;
+            height: 190rem;
+            margin: 5rem auto;
+            padding: 2rem;
+        }
+
+        #product-container #ptitle{
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+        }
+
+        #product-container #category{
+            height: 2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        #product-container #category .menu{
+            display: inline-block;
+            border: 1px #9EC1B7 solid;
+            border-radius: 0.5rem;
+            padding: 0.4rem 1.5rem;
+            margin-right: 0.4rem;
+            color: #767676;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        #product-container #category #entire .menu{
+            color: white;
+            background: #9EC1B7;
+        }
+
+        #product-container .saleitem{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            height: 27rem;
+            margin-bottom: 3rem;
+        }
+
+        #product-container .saleitem .item{
+            width: 25%;
+            height: 100%;
+            margin-left: 2rem;
+        }
+
+        #product-container .saleitem .item:first-child {
+            margin-left: 0;
+        }
+
+        #product-container .saleitem .item .itempicture{
+            position: relative;
+        }
+
+        #product-container .saleitem .item .itempicture button{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: transparent;
+            border: none;
+            margin-bottom: 0.7rem;
+            margin-right: 0.5rem;
+            cursor: pointer;
+        }
+
+        #product-container .saleitem .item .itempicture button img{
+            width: 2rem;
+            height: auto;
+        }
+
+        #product-container .saleitem .item .itempicture a img{
+            width: 100%;
+            height: auto;
+            border-radius: 0.2rem;
+        }
+
+        #product-container .saleitem .item .iteminfo{
+            height: 6rem;
+        }
+
+        #product-container .saleitem .item .iteminfo .seller{
+            font-size: 0.7rem;
+            color: #8b8b8b;
+            margin-bottom: 0.2rem;
+        }
+
+        #product-container .saleitem .item .iteminfo .productname{
+            font-size: 0.9rem;
+            color: #363636;
+            margin-bottom: 0.3rem;
+        }
+
+        #product-container .saleitem .item .iteminfo .discountprice{
+            letter-spacing: 0px;
+        }
+
+        #product-container .saleitem .item .iteminfo .discountprice .price{
+            font-weight: bold;
+            color: #000000;
+            padding: 0.1rem 0rem;
+        }
+
+        #product-container .saleitem .item .iteminfo .discountprice .discount{
+            font-weight: bold;
+            color: red;
+        }
+
+        #product-container .saleitem .item .iteminfo .discountprice .cost{
+            font-weight: bold;
+            color: #AFABAB;
+            text-decoration: line-through;
+        }
+
+        #product-container .saleitem .item .iteminfo .rating{
+            letter-spacing: 0px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-top: 0.3rem;
+            margin-bottom: 0.1rem;
+        }
+        #product-container .saleitem .item .iteminfo .rating img{
+            width:1.2rem;
+            height: auto;
+        }
+        #product-container .saleitem .item .iteminfo .rating .ratingscore{
+            font-weight: bold;
+            font-size: 0.8rem;
+            margin-right: 0.3rem;
+        }
+        #product-container .saleitem .item .iteminfo .rating .reviewcnt{
+            font-size: 0.8rem;
+            color: #8b8b8b;
+        }
+
+        #product-container .saleitem .item .iteminfo .promotion span{
+            font-size: 0.7rem;
+            color: #8b8b8b;
+            background: #ebebeb;
+            border-radius: 0.2rem;
+            padding: 0.2rem;
+            margin-right: 0.1rem;
+        }
+
+    </style>
+</head>
+<body>
+<div id="header">
+    <div id="header-content1">
+        <a href="mainPage.html" id="easycosy">EasyCosy</a>
+        <ul id="menulist">
+            <li class="menu" id="shopping">쇼핑</li>
+            <li class="menu"><a href="#">인테리어</a></li>
+            <li class="menu"><a href="#">업사이클링</a></li>
+            <li class="menu"><a href="#">커뮤니티</a></li>
+        </ul>
+    </div>
+    <div id="header-content2">
+        <div id="search">
+            <img src="image/magnifier.png"/>
+            <input type="search" name="searchword" size=100 placeholder="검색어를 입력하세요"/>
+        </div>
+        <div id="account">
+            <a href="#"><img src="image/account.png"/></a>
+            <a href="#"><img src="image/heart.png"/></a>
+            <a href="#"><img src="image/basket.png"/></a>
+        </div>
+    </div>
+</div>
+
+<div id="category-container">
+    <div id="category-content">
+        <div id="category-content1">
+            <ul id="shopping-menu">
+                <a href="shoppingCategoryPage.html"><li class="menu">카테고리</li></a>
+                <a href="shoppingBestPage.html"><li class="menu">베스트</li></a>
+                <li class="menu" style="color:#9EC1B7; cursor: pointer; user-select: none;">특가세일</li>
+            </ul>
+        </div>
+        <div id="category-content2">
+            <div id="searchranking"><a href="" style="text-decoration: none;"><span style="font-weight: bold;">1</span> &nbsp;&nbsp;&nbsp;&nbsp;첫번째 검색어</a>
+                <ol id="searchrankinglist">
+                    <li class="rank">첫번째 검색어</li>
+                    <li class="rank">두번째 검색어</li>
+                    <li class="rank">셋번째 검색어</li>
+                    <li class="rank">넷번째 검색어</li>
+                    <li class="rank">다섯번째 검색어</li>
+                    <li class="rank">여섯번째 검색어</li>
+                    <li class="rank">일곱번째 검색어</li>
+                    <li class="rank">여덟번째 검색어</li>
+                    <li class="rank">아홉번째 검색어</li>
+                    <li class="rank">열번째 검색어</li>
+                </ol>
+                <img src="image/downarrow.png"/>
+            </div>
+
+            <div id="loginbtn">
+                <a href="#">로그인</a>
+                <a href="#">회원가입</a>
+                <a href="#">고객센터</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="ad-container">
+    <img src="image/banner.jpg"/>
+</div>
+
+<div id="newproduct-container">
+    <div id="title">
+        🎈 신제품 특가세일
+    </div>
+    <div class="saleitem">
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>특가</span>
+                    <span>NEW</span>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>무료배송</span>
+                    <span>특가</span>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>무료배송</span>
+                    <span>베스트</span>
+                    <span>특가</span>
+                    <span>NEW</span>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>베스트</span>
+                    <span>특가</span>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>베스트</span>
+                    <span>특가</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="saleitem">
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>특가</span>
+                    <span>NEW</span>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>무료배송</span>
+                    <span>특가</span>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>무료배송</span>
+                    <span>베스트</span>
+                    <span>특가</span>
+                    <span>NEW</span>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>베스트</span>
+                    <span>특가</span>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>베스트</span>
+                    <span>특가</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="product-container">
+    <div id="ptitle">
+         🎁 특가세일 모아보기
+    </div>
+    <div id="category">
+        <a href="#" id="entire"><div class="menu">전체</div></a>
+        <a href="#"><div class="menu">가구</div></a>
+        <a href="#"><div class="menu">주방용품</div></a>
+        <a href="#"><div class="menu">가전</div></a>
+        <a href="#"><div class="menu">생활용품</div></a>
+    </div>
+    <div class="saleitem">
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>특가</span>
+                    <span>NEW</span>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>무료배송</span>
+                    <span>특가</span>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>무료배송</span>
+                    <span>베스트</span>
+                    <span>특가</span>
+                    <span>NEW</span>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>베스트</span>
+                    <span>특가</span>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>베스트</span>
+                    <span>특가</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="saleitem">
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>특가</span>
+                    <span>NEW</span>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>무료배송</span>
+                    <span>특가</span>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>무료배송</span>
+                    <span>베스트</span>
+                    <span>특가</span>
+                    <span>NEW</span>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>베스트</span>
+                    <span>특가</span>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>베스트</span>
+                    <span>특가</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="saleitem">
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>특가</span>
+                    <span>NEW</span>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>무료배송</span>
+                    <span>특가</span>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>무료배송</span>
+                    <span>베스트</span>
+                    <span>특가</span>
+                    <span>NEW</span>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>베스트</span>
+                    <span>특가</span>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>베스트</span>
+                    <span>특가</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="saleitem">
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>특가</span>
+                    <span>NEW</span>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>무료배송</span>
+                    <span>특가</span>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>무료배송</span>
+                    <span>베스트</span>
+                    <span>특가</span>
+                    <span>NEW</span>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>베스트</span>
+                    <span>특가</span>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>베스트</span>
+                    <span>특가</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="saleitem">
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>특가</span>
+                    <span>NEW</span>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>무료배송</span>
+                    <span>특가</span>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>무료배송</span>
+                    <span>베스트</span>
+                    <span>특가</span>
+                    <span>NEW</span>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>베스트</span>
+                    <span>특가</span>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>베스트</span>
+                    <span>특가</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="saleitem">
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>특가</span>
+                    <span>NEW</span>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>무료배송</span>
+                    <span>특가</span>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>무료배송</span>
+                    <span>베스트</span>
+                    <span>특가</span>
+                    <span>NEW</span>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>베스트</span>
+                    <span>특가</span>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="itempicture">
+                <a href="#"><img src="image/saleitem.png"/></a>
+                <button type="button"><img src="image/heart2.png"></button>
+            </div>
+            <div class="iteminfo">
+                <div class="seller">한샘</div>
+                <div class="productname">[순수 면 100%] 겨울 차렵 이불(이불+시트+베개+베개커버)</div>
+                <div class="discountprice">
+                    <div class="price">22,500</div>
+                    <span class="discount">10%</span>
+                    <span class="cost">25,000</span>
+                </div>
+                <div class="rating">
+                    <img src="image/star.png"/>
+                    <span class="ratingscore">4.8</span>
+                    <span class="reviewcnt">(3,000)</span>
+                </div>
+                <div class="promotion">
+                    <span>베스트</span>
+                    <span>특가</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

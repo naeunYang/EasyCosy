@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Easy Cosy</title>
+    <title>EasyCosy</title>
     <style>
         html {
             font-size: 16px;
@@ -19,30 +19,46 @@
             justify-content: space-between;
             width: 80%;
             height: 7.5rem;
-            margin: -0.5rem auto;
-            padding: 1.5rem 1rem;
+            margin: auto;
         }
-        #header a{
-            margin-bottom: 0.5rem;
-            font-weight: bold; color:#9EC1B7;
+        #header #header-content1{
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        #header #header-content1 #easycosy{
+            font-weight: bold;
+            color:#9EC1B7;
             font-size: 2.5rem;
             text-decoration: none;
+            padding: 2rem 2rem 2.5rem 2rem;
         }
-        #menulist{
-            display: inline-block;
-            margin-left: -15rem;
-        }
-        .menu{
+        #header #header-content1 #menulist{
             display: inline-block;
         }
-        #menulist a{
+        #header #header-content1 #menulist .menu{
+            display: inline-block;
+        }
+        #header #header-content1 #menulist .menu a{
             color: black;
             font-size: 1.4rem;
             font-weight: bold;
             padding: 0rem 0.8rem;
             text-decoration: none;
         }
-        #search{
+        #header #header-content1 #menulist a:hover{
+            color: #9EC1B7;
+        }
+
+        #header #header-content2{
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 2rem;
+        }
+        #header #header-content2 #search{
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -50,52 +66,58 @@
             height: 3rem;
             border: 0.05rem #9EC1B7 solid;
             border-radius: 0.5rem;
-            margin-right: -16rem;
             padding : 0.75rem;
             text-align:left;
             line-height: 1.75rem;
+            margin-right: 2rem;
         }
-        input[type="text"] {
+        #header #header-content2 #search input[type="search"] {
             outline: none;
             background-color: transparent;
             font-size: 1rem;
             width: 16.5rem;
             border: none;
         }
-        img[src="image/magnifier.png"] {
+        #header #header-content2 #search img[src="image/magnifier.png"]{
             width: 2.25rem;
             height: auto;
         }
-        img[src="image/account.png"] {
-            width: 3.25rem;
-            height: auto;
-        }
-        img[src="image/heart.png"] {
-            width: 3rem;
-            height: auto;
-        }
-        img[src="image/basket.png"] {
-            width: 3rem;
-            height: auto;
-            margin-bottom:3px;
-        }
-        #account{
+
+        #header #header-content2 #account{
             display: inline-block;
-            margin-right: 1rem;
         }
-        #account a{
-            margin: 0rem 0.5rem;
+        #header #header-content2 #account img[src="image/account.png"] {
+            width: 3rem;
+            height: auto;
+        }
+        #header #header-content2 #account img[src="image/heart.png"] {
+            width: 3rem;
+            height: auto;
+            margin: 0rem 1rem;
+        }
+        #header #header-content2 #account img[src="image/basket.png"] {
+            width: 3rem;
+            height: auto;
+            padding-bottom: 0.1rem;
         }
 
-        #category{
+
+        #category-container{
+            width: 100%;
+            height: 3.4rem;
+            margin-top: 1.5rem;
+            border-top: 0.1rem #d1d1d1 solid;
+            border-bottom: 0.1rem #d1d1d1 solid;
+        }
+
+        #category-container #category-content{
             display: flex;
             align-items: center;
             justify-content: space-between;
-            width: 100%;
-            height: 3.4rem;
-            border-top: 0.1rem #d1d1d1 solid;
+            width: 80%;
+            height: 100%;
             padding: 1rem 2rem;
-            margin-top: 1.5rem;
+            margin: 0rem auto;
         }
 
         #searchranking{
@@ -105,7 +127,6 @@
             position: relative;
             width: 14rem;
             height: 2.5rem;
-            margin-left: 10rem;
         }
 
         #searchranking a{
@@ -156,7 +177,6 @@
         #loginbtn{
             width: 15rem;
             height: 3.3rem;
-            margin-right: 11.5rem;
             text-align: center;
         }
 
@@ -171,6 +191,8 @@
 
         #loginbtn a:last-child {
             border-right: none;
+            padding-right: 0rem;
+            margin-right: -1rem;
         }
 
         #banner{
@@ -183,20 +205,18 @@
             background: rgba(158, 193, 183, 0.68);
         }
 
-        #adphoto{
+        #banner #adphoto{
             width: 60%;
             height: 100%;
             margin: 0 auto;
-            text-align: center;
-            top: 0.5rem;
         }
 
-        img[src="image/banner.jpg"] {
+        #banner #adphoto img[src="image/banner.jpg"] {
             width: 100%;
-            height: 33rem;
+            height: 100%;
         }
 
-        #leftarrow {
+        #banner #leftarrow {
             position: absolute;
             left: 24rem;
             z-index: 2;
@@ -205,21 +225,21 @@
             cursor: pointer;
         }
 
-        img[src="image/leftarrow.png"] {
+        #banner #leftarrow img{
             width: 4rem;
             height: auto;
         }
 
-        #rightarrow {
+        #banner #rightarrow {
             position: absolute;
-            left: 92rem;
+            right: 24rem;
             z-index: 2;
             background: transparent;
             border: none;
             cursor: pointer;
         }
 
-        img[src="image/rightarrow.png"] {
+        #banner #rightarrow img{
             width: 4rem;
             height: auto;
         }
@@ -281,21 +301,21 @@
             height: auto;
         }
 
-        .item{
+        #sale #saleitem .item{
             width: 20%;
             height: 100%;
             margin-left: 2rem;
         }
 
-        .item:first-child {
+        #sale #saleitem .item:first-child {
             margin-left: 0;
         }
 
-        .itempicture{
+        #sale #saleitem .item .itempicture{
             position: relative;
         }
 
-        .itempicture button{
+        #sale #saleitem .item .itempicture button{
             position: absolute;
             bottom: 0;
             right: 0;
@@ -306,28 +326,28 @@
             cursor: pointer;
         }
 
-        .itempicture button img{
+        #sale #saleitem .item .itempicture button img{
             width: 2rem;
             height: auto;
         }
 
-        .item img{
+        #sale #saleitem .item .itempicture a img{
             width: 100%;
             height: auto;
             border-radius: 0.2rem;
         }
 
-        .iteminfo{
+        #sale #saleitem .item .iteminfo{
             height: 6rem;
         }
 
-        .seller{
+        #sale #saleitem .item .iteminfo .seller{
             font-size: 0.7rem;
             color: #8b8b8b;
             margin-bottom: 0.2rem;
         }
 
-        .productname{
+        #sale #saleitem .item .iteminfo .productname{
             font-size: 0.9rem;
             color: #363636;
             margin-bottom: 0.3rem;
@@ -558,6 +578,7 @@
         #interior #interior-ranking-item .item .itempicture{
             border-radius: 0.2rem;
             height: 90%;
+            width: 100%;
         }
 
         #interior #interior-ranking-item .item .medal{
@@ -881,45 +902,51 @@
 </head>
 <body>
     <div id="header">
-        <a href="mainpage.html">Easy Cosy</a>
-        <ul id="menulist">
-            <li class="menu"><a href="#">쇼핑</a></li>
-            <li class="menu"><a href="#">인테리어</a></li>
-            <li class="menu"><a href="#">업사이클링</a></li>
-            <li class="menu"><a href="#">커뮤니티</a></li>
-        </ul>
-        <div id="search">
-            <img src="image/magnifier.png"/>
-            <input type="text" name="searchword" size=100 placeholder="검색어를 입력하세요"/>
+        <div id="header-content1">
+            <a href="mainPage.html" id="easycosy">EasyCosy</a>
+            <ul id="menulist">
+                <li class="menu"><a href="shoppingCategoryPage.html">쇼핑</a></li>
+                <li class="menu"><a href="#">인테리어</a></li>
+                <li class="menu"><a href="#">업사이클링</a></li>
+                <li class="menu"><a href="#">커뮤니티</a></li>
+            </ul>
         </div>
-        <div id="account">
-            <a href="#"><img src="image/account.png"/></a>
-            <a href="#"><img src="image/heart.png"/></a>
-            <a href="#"><img src="image/basket.png"/></a>
+        <div id="header-content2">
+            <div id="search">
+                <img src="image/magnifier.png"/>
+                <input type="search" name="searchword" size=100 placeholder="검색어를 입력하세요"/>
+            </div>
+            <div id="account">
+                <a href="#"><img src="image/account.png"/></a>
+                <a href="#"><img src="image/heart.png"/></a>
+                <a href="#"><img src="image/basket.png"/></a>
+            </div>
         </div>
     </div>
 
-    <div id="category">
-        <div id="searchranking"><a href="" style="padding-left: 1.2rem; text-decoration: none;"><span style="font-weight: bold;">1</span> &nbsp;&nbsp;&nbsp;&nbsp;첫번째 검색어</a>
-            <ol id="searchrankinglist">
-                <li class="rank">첫번째 검색어</li>
-                <li class="rank">두번째 검색어</li>
-                <li class="rank">셋번째 검색어</li>
-                <li class="rank">넷번째 검색어</li>
-                <li class="rank">다섯번째 검색어</li>
-                <li class="rank">여섯번째 검색어</li>
-                <li class="rank">일곱번째 검색어</li>
-                <li class="rank">여덟번째 검색어</li>
-                <li class="rank">아홉번째 검색어</li>
-                <li class="rank">열번째 검색어</li>
-            </ol>
-            <img src="image/downarrow.png"/>
-        </div>
+    <div id="category-container">
+        <div id="category-content">
+            <div id="searchranking"><a href="" style="text-decoration: none;"><span style="font-weight: bold;">1</span> &nbsp;&nbsp;&nbsp;&nbsp;첫번째 검색어</a>
+                <ol id="searchrankinglist">
+                    <li class="rank">첫번째 검색어</li>
+                    <li class="rank">두번째 검색어</li>
+                    <li class="rank">셋번째 검색어</li>
+                    <li class="rank">넷번째 검색어</li>
+                    <li class="rank">다섯번째 검색어</li>
+                    <li class="rank">여섯번째 검색어</li>
+                    <li class="rank">일곱번째 검색어</li>
+                    <li class="rank">여덟번째 검색어</li>
+                    <li class="rank">아홉번째 검색어</li>
+                    <li class="rank">열번째 검색어</li>
+                </ol>
+                <img src="image/downarrow.png"/>
+            </div>
 
-        <div id="loginbtn">
-            <a href="#">로그인</a>
-            <a href="#">회원가입</a>
-            <a href="#">고객센터</a>
+            <div id="loginbtn">
+                <a href="#">로그인</a>
+                <a href="#">회원가입</a>
+                <a href="#">고객센터</a>
+            </div>
         </div>
     </div>
 
